@@ -113,6 +113,24 @@ EOD;
         return $html;
     }
 
+
+    /**
+     * @param  string $command
+     * @throws RuntimeException
+     */
+    protected function execute($command)
+    {
+        $cwd = getcwd();
+        chdir($this->repositoryPath);
+        exec($command, $output, $returnValue);
+        chdir($cwd);
+        if ($returnValue !== 0) {
+            throw new RuntimeException(implode("\r\n", $output));
+        }
+        return $output;
+    }
+
+
     /**
      * Return CSS as a string so we have flexibility on where this is placed
      *
@@ -120,7 +138,7 @@ EOD;
      */
     public function getCss()
     {
-        return <<<EOD   
+        return <<<EOD
 #s24-dev-site-banner {
     position: absolute;
     top: 0;
@@ -179,20 +197,5 @@ EOD;
 
     }
 
-    /**
-     * @param  string $command
-     * @throws RuntimeException
-     */
-    protected function execute($command)
-    {
-        $cwd = getcwd();
-        chdir($this->repositoryPath);
-        exec($command, $output, $returnValue);
-        chdir($cwd);
-        if ($returnValue !== 0) {
-            throw new RuntimeException(implode("\r\n", $output));
-        }
-        return $output;
-    }
 
 }

@@ -16,6 +16,19 @@ Then output the site banner via:
 $banner = new \Studio24\SiteBanner($environmentName);
 echo $banner->getBanner();
 ```
+
+### Development
+
+Example test code
+
+```
+include '/path/to/dev-site-banner/vendor/autoload.php';
+use Studio24\SiteBanner;
+
+$banner = new SiteBanner('development');
+echo $banner->getBanner();
+```
+
  
 ## Credits
 

@@ -56,7 +56,6 @@ class SiteBanner {
     {
         $html = '';
 
-
         // Current environment
         $environment = $this->environment;
 
@@ -102,10 +101,23 @@ class SiteBanner {
 $css
 </style>
 <div id="s24-dev-site-banner">
-<div>
-    <div class="c1"><span class="warning">$warningImg</span> You are viewing the $environment website</div>
-    <div class="c2">Branch $branch</div>
-    <div class="c3">Last commit $lastCommit<div>
+    <div class="toolbar-content">
+        <div class="toolbar-segment c1">
+            <div>
+                $warningImg You are viewing the $environment website
+            </div>
+        </div>
+        <div class="toolbar-segment c2">
+            <div>
+                Branch $branch
+            </div>
+        </div>
+        <div class="toolbar-segment c3">
+            <div>
+                Last commit $lastCommit
+            </div>
+        </div>
+    </div>
 </div>
 
 EOD;
@@ -140,47 +152,34 @@ EOD;
     {
         return <<<EOD
 #s24-dev-site-banner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 2.5em;
-    width: 100%;
-    background: #FF0 no-repeat 2px 100%;
-    color: #000;
-    font-family: Helvetica, sans-serif;
-    font-size: 1em;
-}
-
-#s24-dev-site-banner .c1,
-#s24-dev-site-banner .c2
-#s24-dev-site-banner .c3 {
     position: relative;
     top: 0;
     left: 0;
-    padding: 0.5em 1em;
+    width: 100%;
+    background: #cc0;
+    color: #000;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#s24-dev-site-banner .toolbar-segment {
+    float: left;
+    padding: 0;
     width: 33%;
+    line-height: 100%;
 }
-
-#s24-dev-site-banner .c2 {
-    left: 30%;
+#s24-dev-site-banner .toolbar-segment > div {
+    height: 2.5em;
+    line-height: 2.5em;
+    vertical-align: middle;
 }
-
-#s24-dev-site-banner .c3 {
-    left: 60%;
+#s24-dev-site-banner .warning {
+    vertical-align: middle;
+    height: 1.5em;
+    margin: -0.3em 0 0 0.5em;
 }
-
-#s24-dev-site-banner svg.warning {
-    height: 1rem;
-}
-
-#s24-dev-site-banner div {
-    border-right: 1px solid black;
-}
-
-#s24-dev-site-banner div:last-child {
-    border: none;
-}
-
 EOD;
 
     }
@@ -189,9 +188,7 @@ EOD;
     {
         return <<<EOD
 <svg class="warning" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" preserveRatio="xMidYMid meet">
-    <switch>
-        <path d="M3.09 0c-.06 0-.1.04-.13.09l-2.94 6.81c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19l-2.94-6.81c-.02-.05-.07-.09-.13-.09h-.81zm-.09 3h1v2h-1v-2zm0 3h1v1h-1v-1z" />
-  </switch>
+    <path d="M3.09 0c-.06 0-.1.04-.13.09l-2.94 6.81c-.02.05-.03.13-.03.19v.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-.81c0-.05-.01-.14-.03-.19l-2.94-6.81c-.02-.05-.07-.09-.13-.09h-.81zm-.09 3h1v2h-1v-2zm0 3h1v1h-1v-1z" />
 </svg>
 EOD;
 

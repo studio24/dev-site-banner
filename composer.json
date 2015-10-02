@@ -1,0 +1,24 @@
+{
+  "name": "studio24/dev-site-banner",
+  "type": "library",
+  "description": "Development site banner",
+  "keywords": ["development","staging"],
+  "homepage": "https://github.com/studio24/dev-site-banner",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Simon R Jones",
+      "email": "simon@studio24.net",
+      "homepage": "http://studio24.net",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  }
+}
